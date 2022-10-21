@@ -1,7 +1,8 @@
-version: '4.3'
+version: '43'
 
 services:
   mariadb:
+    restart: always
     build:
       context: requirments/mariadb
       args:
@@ -10,6 +11,5 @@ services:
     networks:
       - 네트워크 이름
     hostname: mariadb
-    restart: always
     volumes:
       - mariadb_data:/var/lib/mysql
