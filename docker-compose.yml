@@ -1,0 +1,15 @@
+version: '4.3'
+
+services:
+  mariadb:
+    build:
+      context: requirments/mariadb
+      args:
+        - 입력 변수
+    
+    networks:
+      - 네트워크 이름
+    hostname: mariadb
+    restart: always
+    volumes:
+      - mariadb_data:/var/lib/mysql
