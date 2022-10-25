@@ -4,7 +4,7 @@ sudo apt-get update
 sudo curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 
 # 도커를 설치할 수 있도록 Repository 추가
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian/dists/$(lsb_release -cs) stable"
 
 # Repository 인덱스 업데이트
 sudo apt-get update

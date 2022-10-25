@@ -26,5 +26,5 @@ sudo apt-get install -y make
 sudo apt-get install -y vim
 
 # systemd 설치
-sudo apt-get install -y system
+sudo apt-get install -y systemd
 
