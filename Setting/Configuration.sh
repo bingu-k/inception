@@ -11,7 +11,7 @@ sudo apt-get install -y apt-transport-https
 sudo apt-get install -y ca-certificates
 
 # 다양한 통신 프로토콜을 지원하는 데이터 송,수신 패키지
-sudo apt-get install -y curl
+sudo apt-get install -y curl gnupg2
 
 # Repository를 추가 및 삭제할 수 있도록 설정하는 패키지
 sudo apt-get install -y software-properties-common
@@ -24,7 +24,3 @@ sudo apt-get install -y make
 
 # vim 설치
 sudo apt-get install -y vim
-
-# systemd 설치
-sudo apt-get install -y systemd
-
