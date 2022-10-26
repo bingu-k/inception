@@ -2,10 +2,10 @@ version: '3'
 
 services:
   mariadb:
+    container_name: mariadb
     build:
       context: ./requirements/mariadb
     restart: always
-    container_name: mariadb
     networks:
       - inception
     env_file:
