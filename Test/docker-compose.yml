@@ -2,15 +2,14 @@ version: '3'
 
 services:
   mariadb:
-    build:
-      context: ./requirements/mariadb
-      dockerfile: Dockerfile
+    build: ./requirements/mariadb/
     container_name: mariadb
     restart: always
     networks:
       - inception
     env_file:
       - .env
+    image: mariadb
     volumes:
       - db:/var/lib/mysql
     expose:
@@ -27,4 +26,4 @@ volumes:
 
 networks:
   inception:
-    driver: bridge 
+    driver: bridge

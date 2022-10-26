@@ -10,6 +10,4 @@ RUN	chmod 777 /var/run/mysqld
 
 COPY tools/conf.sh ./
 
-EXPOSE 3306
-
 ENTRYPOINT  ["sh", "./conf.sh"]
