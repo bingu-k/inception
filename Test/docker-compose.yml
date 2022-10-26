@@ -3,7 +3,7 @@ version: '3'
 services:
   mariadb:
     build:
-      context: ./requirments/mariadb
+      context: ./requirements/mariadb
     restart: always
     container_name: mariadb
     networks:
@@ -18,7 +18,7 @@ volumes:
     driver: local
     driver_opts:
       type: volume
-      device: ${VALPATH}/data/mariadb
+      device: ${VALPATH}/mariadb
       o: bind
   wordpress:
 
