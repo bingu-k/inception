@@ -11,4 +11,4 @@ COPY tools/conf.sh /
 
 EXPOSE 3306
 
-ENTRYPOINT  ["sh", "conf.sh"]
+ENTRYPOINT  ["sh", "./tools/conf.sh"]
