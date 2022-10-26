@@ -7,8 +7,8 @@ RUN	mkdir -p /var/lib/mysql /var/run/mysqld
 RUN	chown -R mysql:mysql /var/lib/mysql /var/run/mysqld
 RUN	chmod 777 /var/run/mysqld
 
-COPY tools/conf.sh /
+COPY tools/conf.sh ./
 
 EXPOSE 3306
 
-ENTRYPOINT  ["sh", "./tools/conf.sh"]
+ENTRYPOINT  ["sh", "conf.sh"]
