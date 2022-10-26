@@ -21,6 +21,9 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-
 # 도커 컴포즈 실행 권한 부여
 sudo chmod +x /usr/local/bin/docker-compose
 
+# 심볼릭 링크 설정
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+
 # 도커 서비스 재시작 시 컨테이너를 종료하지 않도록 설정
 sudo su -c 'printf "{\n\t\"live-restore\": true\n}" > /etc/docker/docker.json’
 

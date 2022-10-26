@@ -1,15 +1,27 @@
-version: '43'
+version: '3'
 
 services:
   mariadb:
-    restart: always
     build:
-      context: requirments/mariadb
-      args:
-        - 입력 변수
-    
+      context: ./requirments/mariadb
+    restart: always
+    container_name: mariadb
     networks:
-      - 네트워크 이름
-    hostname: mariadb
+      - inception
+    env_file:
+      - .env
     volumes:
-      - mariadb_data:/var/lib/mysql
+      - db:/var/lib/mysql
+
+volumes:
+  db:
+    driver: local
+    driver_opts:
+      type: volume
+      device: ${VALPATH}/data/mariadb
+      o: bind
+  wordpress:
+
+networks:
+  inception:
+    driver: bridge 
