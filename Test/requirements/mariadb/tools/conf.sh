@@ -1,12 +1,19 @@
-#!/bin/bash
+if [ ! -d "/var/lib/mysql/${MARIADB_DB}" ]
+then
+	service mysql start;
 
-mysql -e "CREATE DATABASE ${MARIADB_DB};"
+	mysql -u ${MYSQL_ROOT} -e "CREATE DATABASE ${MARIADB_DB};"
 
-mysql -e "CREATE USER '${MARIADB_USER}'@'%' IDENTIFIED BY '${MARIADB_USER_PWD}';"
-mysql -e "GRANT ALL PRIVILEGES ON ${MARIADB_DB}.* TO '${MARIADB_USER}'@'%';"
+	mysql -u ${MYSQL_ROOT} -e "CREATE USER '${MARIADB_USER}'@'%' IDENTIFIED BY '${MARIADB_USER_PWD}';"
+	mysql -u ${MYSQL_ROOT} -e "GRANT ALL PRIVILEGES ON ${MARIADB_DB}.* TO '${MARIADB_USER}'@'%';"
 
-mysql -e "UPDATE mysql.user SET Password = PASSWORD('${MARIADB_ROOT_PASSWORD}') WHERE User = '${MARIADB_ROOT}';"
+	mysql -u ${MYSQL_ROOT} -e "FLUSH PRIVILEGES;"
+	
+	mysql -u ${MYSQL_ROOT} -e "UPDATE mysql.user SET Password = PASSWORD('${MYSQL_ROOT_PASSWORD}') WHERE User = '${MYSQL_ROOT}';"
 
-mysql -e "FLUSH PRIVILEGES;"
+	service mysql stop;
+else
+	echo "\tAlready exists DB";
+fi
 
-service mysql start
+mysqld;
