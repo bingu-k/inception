@@ -9,6 +9,7 @@ RUN	mkdir -p /var/lib/mysql /var/run/mysqld
 RUN	chown -R mysql:mysql /var/lib/mysql /var/run/mysqld
 RUN	chmod 777 /var/run/mysqld
 
-COPY tools/conf.sh ./
+COPY conf/my.cnf	/etc/mysql/my.cnf
+COPY tools/conf.sh	./
 
 ENTRYPOINT  ["sh", "./conf.sh"]
