@@ -2,8 +2,8 @@ FROM debian:buster
 
 MAINTAINER byeukim
 
-RUN apt update
-RUN apt -y install mariadb-server
+RUN apt-get -y update
+RUN apt-get -y install mariadb-server
 
 COPY tools/conf.sh	.
 RUN chmod +x conf.sh
