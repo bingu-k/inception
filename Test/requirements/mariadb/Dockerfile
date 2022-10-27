@@ -1,15 +1,19 @@
 FROM debian:buster
 
-LABEL author byeukim
+MAINTAINER byeukim
+
+ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get -y update
 RUN apt-get -y upgrade
 RUN apt-get install -y mariadb-server
-RUN	mkdir -p /var/lib/mysql /var/run/mysqld
-RUN	chown -R mysql:mysql /var/lib/mysql /var/run/mysqld
-RUN	chmod 777 /var/run/mysqld
 
-COPY conf/my.cnf	/etc/mysql/my.cnf
-COPY tools/conf.sh	./
+RUN echo "\ndaemon off;" >> /etc/mysql/mariadb.cnf
 
-ENTRYPOINT  ["sh", "./conf.sh"]
+COPY tools/conf.sh	.
+RUN chmod +x conf.sh
+
+RUN rm /etc/mysql/mariadb.conf.d/50-server.cnf
+COPY conf/50-server.cnf /etc/mysql/mariadb.conf.d
+
+ENTRYPOINT  ["bash", "conf.sh"]

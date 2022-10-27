@@ -14,6 +14,8 @@ services:
       - db:/var/lib/mysql
     expose:
       - "3306"
+# wordpress:
+# nginx:
 
 volumes:
   db:
@@ -23,6 +25,11 @@ volumes:
       device: ${VALPATH}/mariadb
       o: bind                     # 내가 지정한 로컬 경로와 도커내의 볼륨을 연동
   wordpress:
+    driver: local
+    driver_opts:                  # db에 대한 옵션 설정
+      type: volume
+      device: ${VALPATH}/mariadb
+      o: bind                     # 내가 지정한 로컬 경로와 도커내의 볼륨을 연동
 
 networks:
   inception:
