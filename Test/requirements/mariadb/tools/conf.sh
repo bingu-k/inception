@@ -9,7 +9,7 @@ then
 
 	mysql -u ${MYSQL_ROOT} -e "FLUSH PRIVILEGES;"
 	
-	mysql -u ${MYSQL_ROOT} -e "UPDATE mysql.user SET Password = PASSWORD('${MYSQL_ROOT_PASSWORD}') WHERE User = '${MYSQL_ROOT}';"
+	mysql -u ${MYSQL_ROOT} -e "ALTER USER '${MYSQL_ROOT}'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
 
 	service mysql stop;
 else
