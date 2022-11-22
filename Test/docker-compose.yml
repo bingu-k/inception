@@ -12,8 +12,7 @@ services:
     image: mariadb
     volumes:
       - db:/var/lib/mysql
-    expose:
-      - "3306"
+      
   wordpress:
     build: ./requirements/wordpress/
     container_name: wordpress

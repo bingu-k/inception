@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  mariadb:
+    container_name: mariadb
+    build: ./requirements/mariadb
+    restart: always
+    expose:
+      - "3306"
+    volumes:
+      - db:/var/lib/mysql
+    env_file:
+      - .env
+
+volumes:
+  db:
+  wordpress:
