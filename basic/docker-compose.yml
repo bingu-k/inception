@@ -5,7 +5,38 @@ services:
     container_name: mariadb
     build: ./requirements/mariadb
     restart: always
-    # expose:
-    #   - "3306"
+    networks:
+      - intra
+    expose:
+      - "3306"
     env_file:
       - .env
+  nginx:
+    container_name: nginx
+    build: ./requirements/nginx
+    restart: always
+    ports:
+      - "443:443"
+    volumes:
+      - data:/var/www/html/wordpress
+    networks:
+      - intra
+    tty: true
+  wordpress:
+    container_name: wordpress
+    build: ./requirements/wordpress
+    restart: always
+    volumes:
+      - data:/var/www/html/wordpress
+    expose: 
+      - "9000"
+    networks:
+      - intra
+    tty: true
+
+networks:
+  intra:
+    driver: bridge
+
+volumes:
+  data: {}
