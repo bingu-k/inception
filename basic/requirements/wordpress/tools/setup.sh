@@ -33,4 +33,4 @@ if [ ! -f "/var/www/html/wordpress/index.php" ]; then
     # wp 유저를 생성해준다.
 fi
 
-exec /usr/sbin/php-fpm7.3
+exec /usr/sbin/php-fpm7.3 -F
