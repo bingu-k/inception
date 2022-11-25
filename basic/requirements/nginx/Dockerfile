@@ -12,7 +12,7 @@ RUN mkdir -p /etc/nginx/ssl
 RUN openssl req -x509 -nodes \
     -newkey rsa:2048 \
     -subj "/C=KR/ST=Seoul/L=Gang-nam/O=42seoul/OU=Kim/CN=byeukim" \
-    -keyout /etc/nginx/ssl/private/nginx.key \
-    -out /etc/nginx/ssl/certs/nginx.crt
+    -keyout /etc/nginx/ssl/nginx.key \
+    -out /etc/nginx/ssl/nginx.crt
 
 CMD ["nginx", "-g", "daemon off;"]

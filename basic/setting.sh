@@ -19,17 +19,5 @@ sudo apt-get install -y curl
 # Repository를 추가 및 삭제할 수 있도록 설정하는 패키지
 sudo apt-get install -y software-properties-common
 
-# git 설치
-sudo apt-get install -y git
-
-# make 설치
-sudo apt-get install -y make
-
-# vim 설치
-sudo apt-get install -y vim
-
-# systemd 설치
-sudo apt-get install -y systemd
-
 # sudo 권한 부여
-# vim /etc/sudoer에서 유저이름 추가
+# vim /etc/sudoers에서 유저이름 추가
