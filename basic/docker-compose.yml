@@ -23,7 +23,6 @@ services:
       - intra
     env_file:
       - .env
-    tty: true
   wordpress:
     depends_on:
       - mariadb
