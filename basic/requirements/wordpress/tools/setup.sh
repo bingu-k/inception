@@ -3,6 +3,9 @@
 chown -R www-data:www-data /var/www/
 # nginx에서 접근할 수 있게 권한 설정
 
+sed -i "s/listen = \/run\/php\/php7.3-fpm.sock/listen = 0.0.0.0:9000/g" /etc/php/7.3/fpm/pool.d/www.conf;
+# 9000 포트를 모든 ip에 연다.
+
 if [ ! -f "/var/www/html/wordpress/wp-config.php" ]; then
     wp --allow-root --path=/var/www/html/wordpress \
 		core download \
@@ -34,10 +37,12 @@ if [ ! -f "/var/www/html/wordpress/wp-config.php" ]; then
         --user_pass=$WP_USER_PASSWORD && \
     # wp 유저를 생성해준다.
     wp --allow-root --path=/var/www/html/wordpress \
-        theme activate twentytwentytwo && \
+        theme activate twentytwentytwo
 	# twentytwentytwo 테마 활성화
-    sed -i "s/listen = \/run\/php\/php7.3-fpm.sock/listen = 0.0.0.0:9000/g" /etc/php/7.3/fpm/pool.d/www.conf;
-    # 9000 포트를 모든 ip에 연다.
 fi
+
+echo "
+WordPress Start!
+";
 
 exec /usr/sbin/php-fpm7.3 -F

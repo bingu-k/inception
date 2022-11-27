@@ -50,5 +50,15 @@ networks:
     driver: bridge
 
 volumes:
-  wordpress_vol: {}
-  db_vol: {}
+  wordpress_vol:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/byeukim/data/wp
+      o: bind
+  db_vol:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/byeukim/data/db
+      o: bind

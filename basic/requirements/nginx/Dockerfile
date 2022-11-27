@@ -7,12 +7,15 @@ RUN apt-get update -y && \
 
 COPY conf/nginx.conf /etc/nginx/conf.d/
 
-RUN openssl req -x509 -nodes \
-    -newkey rsa:2048 \
+COPY tools/setup.sh /tmp
+RUN chmod +x /tmp/setup.sh
+
+RUN openssl req -newkey rsa:2048 -x509 -nodes \
     -subj "/C=KR/ST=Seoul/L=Gang-nam/O=42seoul/OU=Kim/CN=byeukim" \
-    -keyout /etc/nginx/ssl/www.byeukim.42.fr.key \
-    -out /etc/nginx/ssl/www.byeukim.42.fr.crt
+    -keyout /etc/nginx/ssl/byeukim.42.fr.key \
+    -out /etc/nginx/ssl/byeukim.42.fr.crt
+# TLS를 사용하기 위한 ssl 인증서 생성
 
 EXPOSE 443
 
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT [ "bash", "/tmp/setup.sh" ]

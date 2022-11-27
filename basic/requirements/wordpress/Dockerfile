@@ -16,6 +16,6 @@ RUN apt-get update -y && \
 COPY ./tools/setup.sh /tmp
 RUN chmod +x /tmp/setup.sh
 
-ENTRYPOINT [ "bash", "/tmp/setup.sh" ]
-
 EXPOSE 9000
+
+ENTRYPOINT [ "bash", "/tmp/setup.sh" ]
