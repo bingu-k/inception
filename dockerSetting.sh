@@ -35,3 +35,5 @@ sudo su -c 'printf "{\n\t\"live-restore\": true\n}" > /etc/docker/docker.json'
 sudo systemctl restart docker
 sudo chmod 666 /var/run/docker.sock
 sudo chmod +x /usr/local/bin/docker-compose
+
+sudo echo "127.0.0.1	byeukim.42.fr" >> /etc/hosts
